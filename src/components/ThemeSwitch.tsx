@@ -1,31 +1,30 @@
 import React, { ReactElement, useState } from 'react'
-import { Global } from '@storybook/theming'
 import { Icons, IconButton, WithTooltip, TooltipLinkList } from '@storybook/components'
-import { themeList } from '../config'
+import { themeIds, themeList } from '../config'
 
-const IFRAME_ID = 'storybook-preview-iframe'
-
-const getThemeList = (activeId: string | null, set: (id: string) => void) => themeList.map(({ id, title }) => ({
+const getThemeList = (activeId: string | null, set: (id: string) => void) => themeList.map(({ file, id, title }) => ({
+  file,
   id,
   title,
   onClick: () => set(id),
   active: activeId === id,
 }))
 
+const getCssFile = (themeId: string): ReactElement => {
+  const theme = themeList.find(({ id }) => id === themeId)
+  if (theme) {
+    return (<link rel="stylesheet" href={`./${theme.file}`} />)
+  }
+
+  return (<></>)
+}
+
 export function ThemeSwitch(): ReactElement {
-  const [themeId, setThemeId] = useState<string | null>(null)
+  const [themeId, setThemeId] = useState<string>(themeIds.THEME_1)
 
   return (
     <>
-      {themeId && (
-        <Global
-          styles={{
-            [`#${IFRAME_ID}`]: {
-              content: `${themeId}`,
-            },
-          }}
-        />
-      )}
+      {themeId && getCssFile(themeId)}
       <WithTooltip
         placement="top"
         trigger="click"
