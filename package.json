@@ -1,0 +1,40 @@
+{
+  "name": "@nirazul/storybook-addon-theme-switch",
+  "version": "1.0.0",
+  "description": "Globally switch between file based themes",
+  "main": "./lib/index.js",
+  "scripts": {
+    "build": "rm -rf ./lib && npx tsc",
+    "prepublishOnly": "npm run build",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nirazul/storybook-addon-theme-switch.git"
+  },
+  "keywords": [
+    "storybook",
+    "addon",
+    "theme",
+    "switch",
+    "css"
+  ],
+  "author": "Rouven Bühlmann",
+  "license": "CC0-1.0",
+  "bugs": {
+    "url": "https://github.com/nirazul/storybook-addon-theme-switch/issues"
+  },
+  "homepage": "https://github.com/nirazul/storybook-addon-theme-switch#readme",
+  "peerDependencies": {
+    "react": "*"
+  },
+  "dependencies": {
+    "@storybook/addons": "^5.3.19",
+    "@storybook/components": "^5.3.19"
+  },
+  "devDependencies": {
+    "@storybook/theming": "^5.3.19",
+    "@types/node": "^14.0.27",
+    "typescript": "^3.9.7"
+  }
+}
